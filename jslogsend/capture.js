@@ -1,10 +1,10 @@
 (function(){
-  var url = "http://localhost:5000/send_log";
+  var url = "http://127.0.0.1:5000/send_log";
   var method = "POST";
   var shouldBeAsync = true;
 
   var oldLog = console.log;
-  console.log = function (message) {
+  console.log = function (message, obj) {
     var request = new XMLHttpRequest();
 
   request.onreadystatechange = function() {
@@ -17,7 +17,7 @@
     // Or... request.setRequestHeader("Content-Type", "text/plain;charset=UTF-8");
 
     // Actually sends the request to the server.
-    request.send(message);
+    request.send(JSON.stringify(obj));
     oldLog.apply(console, arguments);
   };
 })(); 

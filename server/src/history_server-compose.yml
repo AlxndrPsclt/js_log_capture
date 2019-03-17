@@ -1,4 +1,4 @@
-version: '3.7'
+version: '3.6'
 
 services:
 
@@ -6,9 +6,10 @@ services:
     build: ./flask/
     command: "python app.py"
     ports:
-      - 8000:8000
+      - 5000:8000
     volumes:
       - $VOLUMES_FOLDER/flask/app:/usr/src/app/
+      - $VOLUMES_FOLDER/flask/recieved_logs:/var/recieved_logs/
     networks:
       - my_app-network
 
